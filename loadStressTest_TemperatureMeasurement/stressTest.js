@@ -1,4 +1,5 @@
 let m_placeholder = 0
+let list: number[] = []
 let m_currentTemperature = 0
 let oldTemperature = 0
 // pressing buttonA should start some heavy
@@ -11,10 +12,13 @@ input.onButtonPressed(Button.A, () => {
 // pressing buttonB should stop the computation
 input.onButtonPressed(Button.B, () => {
     basic.showNumber(m_currentTemperature)
-    basic.showString(m_doComputation ? "computing" : "idle")
+    basic.showString(m_doComputation ? "run" : "idle")
 })
 let m_doComputation = 0
 m_doComputation = 0
+for (let i = 0; i < 100; i++) {
+    list.push(Math.random(10))
+}
 // display always the current temperature
 basic.forever(() => {
     // save the current temperature
@@ -28,8 +32,8 @@ basic.forever(() => {
     // computation-block: has to be improved ... does not
     // look really heavy
     if (m_doComputation) {
-        for (let iterator = 0; iterator <= 99999; iterator++) {
-            m_placeholder = 43264257 / 7
+        for (let value of list) {
+            value = (value * Math.random(10)) % 1
         }
     }
 })
