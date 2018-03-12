@@ -1,5 +1,5 @@
-let m_placeholder = 0
 let list: number[] = []
+let m_placeholder = 0
 let m_currentTemperature = 0
 let oldTemperature = 0
 // pressing buttonA should start some heavy
@@ -15,6 +15,7 @@ input.onButtonPressed(Button.B, () => {
     basic.showString(m_doComputation ? "run" : "idle")
 })
 let m_doComputation = 0
+m_placeholder = 0
 m_doComputation = 0
 for (let i = 0; i < 100; i++) {
     list.push(Math.random(10))
@@ -28,12 +29,14 @@ basic.forever(() => {
     if (oldTemperature != m_currentTemperature) {
         basic.showNumber(m_currentTemperature)
     }
+})
+control.inBackground(() => {
     // here in the main-loop is the heavy
     // computation-block: has to be improved ... does not
     // look really heavy
     if (m_doComputation) {
         for (let value of list) {
-            value = (value * Math.random(10)) % 1
+            value = value * Math.random(10) % Math.random(101)
         }
     }
 })
