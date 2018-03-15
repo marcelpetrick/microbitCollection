@@ -26,9 +26,7 @@ basic.forever(() => {
     if (oldTemperature != m_currentTemperature) {
         basic.showNumber(m_currentTemperature)
     }
-})
 
-control.inBackground(() => {
     // here in the main-loop is the heavy
     // computation-block: has to be improved ... does not
     // look really heavy
