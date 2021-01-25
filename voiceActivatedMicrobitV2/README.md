@@ -431,3 +431,23 @@ debugging with serial terminal:
 obviously the code works, but the "hits" are not accepted. so maybe adjusting the code would help
 
 looks like "source\MicrophoneInferenceTest.cpp" contains the program
+
+------------------------
+Since asking on github would be weird and youtube comments are blocked, I've added a comment to their original post:
+
+"Greetings Jan and everyone else at Edge Impulse.
+Thank you for the nice tutorial, each step was well comprehensible.
+After fixing the local toolchain I also got a successful build done and deployed the hex-file, but nothing was recognized.
+The terminal shows results like this: "Predictions (DSP: 88 ms., Classification: 19 ms.):
+                                                                   auto_vocal_11khz: 0
+                                                                                          noise: 0.81835
+                                                                                                            unknown: 0.17968
+                                                                                                                            Predictions (DSP: 88 ms., Classification: 18 ms.):
+                   auto_vocal_11khz: 0
+                                          noise: 0.84374
+                                                            unknown: 0.15624"
+So my sample keyword ("auto") is not recognized? What could be the reason? Test- and sample-data was derived from my smartphone. Model looked quite well in the browser, but obviously not on the micro:bit v2.
+Could there be a problem with the differences between the two microphones?
+
+Any help or hint is welcome. Thank you! :)
+"
