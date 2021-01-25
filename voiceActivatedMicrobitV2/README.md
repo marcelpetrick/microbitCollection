@@ -325,3 +325,41 @@ install the three things for the toolchain: cmake, python 2.7 and the GNU ARM to
 build, deploy, run..
 
 tbc
+-----------------
+problem after installing all three things:
+
+C:\Users\husband-boy\Desktop\coding\voice-activated-microbit>python build.py
+Creating libraries folder
+Cloning into: https://github.com/Lancaster-University/codal-microbit-v2
+Cloning into 'codal-microbit-v2'...
+Checking out branch: master
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Set target: codal-microbit-v2
+Using target.json (dev version)
+Targeting codal-microbit-v2
+CMake Error: CMake was unable to find a build program corresponding to "Ninja".  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.
+-- Configuring incomplete, errors occurred!
+See also "C:/Users/husband-boy/Desktop/coding/voice-activated-microbit/build/CMakeFiles/CMakeOutput.log".
+
+C:\Users\husband-boy\Desktop\coding\voice-activated-microbit>
+
+------------------
+installed ninja by downloading and putting to dir:
+
+how to configure the path?
+"edit environment windows crap"; setting path did not work well (python not found afterwards)
+
+print
+--> path
+changing
+--> set "PATH=C:\ninjav1102;%PATH%"
+
+------------------
+cd "C:\Users\husband-boy\Desktop\coding\voice-activated-microbit"
+
+-------------------
+fix one line in: CMakeCache.txt with the real location of your ninja executable
+
+//Program used to build from build.ninja files.
+CMAKE_MAKE_PROGRAM:FILEPATH=C:/ninjav1102/ninja.exe
