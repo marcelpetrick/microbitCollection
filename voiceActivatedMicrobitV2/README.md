@@ -363,3 +363,71 @@ fix one line in: CMakeCache.txt with the real location of your ninja executable
 
 //Program used to build from build.ninja files.
 CMAKE_MAKE_PROGRAM:FILEPATH=C:/ninjav1102/ninja.exe
+
+--------------------
+..
+[588/711] Building C object libraries/codal-microbit-nrf5sdk/CMakeFiles/codal-microbit-nrf5sdk.dir/nRF5SDK/components/ble/peer_manager/gatt_cache_manager.c.obj
+../libraries/codal-microbit-nrf5sdk/nRF5SDK/components/ble/peer_manager/gatt_cache_manager.c: In function 'service_changed_send_in_evt':
+../libraries/codal-microbit-nrf5sdk/nRF5SDK/components/ble/peer_manager/gatt_cache_manager.c:364:9: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  364 |         {
+      |         ^
+../libraries/codal-microbit-nrf5sdk/nRF5SDK/components/ble/peer_manager/gatt_cache_manager.c:385:9: note: here
+  385 |         case NRF_ERROR_NOT_SUPPORTED:
+      |         ^~~~
+[598/711] Building CXX object libraries/codal-core/CMakeFiles/codal-core.dir/source/driver-models/Timer.cpp.obj
+C:\Users\HUSBAN~1\AppData\Local\Temp\ccEYxWFb.s: Assembler messages:
+C:\Users\HUSBAN~1\AppData\Local\Temp\ccEYxWFb.s:124: Warning: ignoring changed section attributes for .data
+[683/711] Building C object libraries/codal-microbit-nrf5sdk/CMakeFiles/codal-microbit-nrf5sdk.dir/nRF5SDK/components/libraries/fds/fds.c.obj
+../libraries/codal-microbit-nrf5sdk/nRF5SDK/components/libraries/fds/fds.c: In function 'write_execute':
+../libraries/codal-microbit-nrf5sdk/nRF5SDK/components/libraries/fds/fds.c:1262:16: warning: this statement may fall through [-Wimplicit-fallthrough=]
+ 1262 |             if (!record_find_by_desc(&desc, &page))
+      |                ^
+../libraries/codal-microbit-nrf5sdk/nRF5SDK/components/libraries/fds/fds.c:1270:9: note: here
+ 1270 |         case FDS_OP_WRITE_HEADER_BEGIN:
+      |         ^~~~
+[711/711] converting to bin file.
+
+C:\Users\husband-boy\Desktop\coding\voice-activated-microbit>
+
+------------------------
+copied the hex file (root dir) to the microbit: red led are on, but I see no smily on "auto" :/
+------------------------
+debugging with serial terminal:
+
+
+                 unknown: 0.09179
+                                 Predictions (DSP: 89 ms., Classification: 18 ms.):
+                                                                                        auto_vocal_11khz: 0.01171
+                                                                                                                     noise: 0.80273
+                                                                                                                                       unknown: 0.18554
+                                                                                                                                                       Predictions (DSP: 88 ms., Classification: 18 ms.):
+                                              auto_vocal_11khz: 0.00195
+                                                                           noise: 0.77343
+                                                                                             unknown: 0.2246
+                                                                                                            Predictions (DSP: 88 ms., Classification: 18 ms.):
+                                                                                                                                                                   auto_vocal_11khz: 0
+                          noise: 0.87304
+                                            unknown: 0.12695
+                                                            Predictions (DSP: 89 ms., Classification: 18 ms.):
+                                                                                                                   auto_vocal_11khz: 0
+                                                                                                                                          noise: 0.88867
+                                                                                                                                                            unknown: 0.10937
+            Predictions (DSP: 88 ms., Classification: 19 ms.):
+                                                                   auto_vocal_11khz: 0
+                                                                                          noise: 0.81835
+                                                                                                            unknown: 0.17968
+                                                                                                                            Predictions (DSP: 88 ms., Classification: 18 ms.):
+                   auto_vocal_11khz: 0
+                                          noise: 0.84374
+                                                            unknown: 0.15624
+                                                                            Predictions (DSP: 88 ms., Classification: 18 ms.):
+                                                                                                                                   auto_vocal_11khz: 0
+                                                                                                                                                          noise: 0.91796
+            unknown: 0.08007
+                            Predictions (DSP: 88 ms., Classification: 18 ms.):
+                                                                                   auto
+------------------------
+
+obviously the code works, but the "hits" are not accepted. so maybe adjusting the code would help
+
+looks like "source\MicrophoneInferenceTest.cpp" contains the program
