@@ -451,3 +451,36 @@ Could there be a problem with the differences between the two microphones?
 
 Any help or hint is welcome. Thank you! :)
 "
+
+------------------------
+run gccvar.bat
+go to source dir
+cd "C:\Users\husband-boy\Desktop\coding\voice-activated-microbit"
+echo "add the path for ninja - yeah, but now python isn't found anymore, lol"
+set PATH="C:\ninjav1102;%PATH%"
+python build.py
+------------------------
+@marcelpetrick When running in continuous mode we run a moving average over the predictions to prevent false positives. E.g. if we do 3 classifications per second you’ll see ‘auto’ potentially classified three times (once at the start of the audio file, once in the middle, once at the end). However, if your dataset is unbalanced (there’s a lot more noise / unknown than auto in your dataset) the ML model typically manages to only find your keyword in the ‘center’ window, and thus we filter it out as a false positive.
+
+You can fix this by either:
+
+    Add more data :wink:
+    Or, disable moving average by going into ei_run_classifier.h (in the edge-impulse-sdk directory) and removing:
+
+        for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
+            result->classification[ix].value =
+                run_moving_average_filter(&classifier_maf[ix], result->classification[ix].value);
+        }
+
+You’ll now see predictions go up:
+
+image
+
+(this was while playing a sample from your dataset over my speakers, you might see confidence go up a bit less).
+------------------------
+@janjongboom Thank you very much for the input. I went for the second idea: disable code; allow false positives. Yes, the confidence rises up to 0.84, but this is not enough to be recognized.
+I will try to add now much more data. If this does still not work, I will go for the suggested keyword “microbit” 
+
+------------------------
+
+------------------------
